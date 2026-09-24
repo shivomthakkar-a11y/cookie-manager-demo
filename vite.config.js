@@ -105,7 +105,7 @@ function strictCsp() {
 // in index.html. This is what a real client running a nonce policy looks like.
 // ---------------------------------------------------------------------------
 
-export default defineConfig({ plugins: [react(), strictCsp()], base: '/' })
+// export default defineConfig({ plugins: [react(), strictCsp()], base: '/' })
 
 // DISABLE CSP - uncomment the block below to serve no policy header at all.
 // The banner must still render and work exactly the same, which is the whole
@@ -113,7 +113,7 @@ export default defineConfig({ plugins: [react(), strictCsp()], base: '/' })
 // The __PRIVY_NONCE__ placeholder is left unsubstituted in this mode and is
 // harmless, because a nonce attribute is only consulted when a policy names one.
 
-// export default defineConfig({
-//   plugins: [react()],
-//   base: '/'
-// })
+export default defineConfig({
+  plugins: [react()],
+  base: '/'
+})
