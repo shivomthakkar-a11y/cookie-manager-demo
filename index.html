@@ -23,7 +23,7 @@
 
 
 <!-- Strict CSP? Put nonce="YOUR_NONCE" on the tag below, and make sure both script-src and style-src accept that nonce (the banner nonces its stylesheets too). Injecting this tag from your own script? Set s.nonce = "YOUR_NONCE" on the element, or window.Privy = window.Privy || {}; window.Privy.nonce = "YOUR_NONCE"; if you cannot (that fallback needs 'strict-dynamic' in script-src, or the injected tag never runs). -->
-<script type="text/javascript" src="https://privy.idfystaging.com/cookie-manager/cookie-banner/assets/72c53aa1642b/aea48ab5-c525-49ee-b1bc-26e9e15bde16"></script>
+<script type="text/javascript" src="https://privy.idfystaging.com/cookie-manager/cookie-banner/assets/72c53aa1642b/603b4b16-7253-4c1b-a15a-272f5441433b" nonce="__PRIVY_NONCE__"></script>
 </head>
 <body>
   <!-- <iframe src="https://www.clarity.ms/tag/f4v1091lex" frameborder="0"></iframe> -->
@@ -34,13 +34,10 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div id="root"></div>
+  <!-- HubSpot forms loader, kept for the pre-consent tag tests (PRI-89). The
+       form itself is not created: it injects <style> tags without our nonce,
+       the strict CSP blocks them and the form throws styled-components #17. -->
   <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js"></script>
-  <script>
-    hbspt.forms.create({
-      portalId: "48746683",
-      formId: "0f45e9f9-0451-488e-babb-fd325ba2af4f"
-    });
-  </script>
 
   <!-- Test vendors (PRI-89). Real third-party tags so the scanner and the
        banner have cookies to find. Keep them below the banner tag, and add new
