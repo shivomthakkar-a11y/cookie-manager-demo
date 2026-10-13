@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { randomBytes } from 'node:crypto'
+import privyRegions from './regions/privy-regions.js'
 
 // TEMPORARY, for PRI-87 manual verification.
 // Restore the original with:  cp ../.demo-vite.restore vite.config.js
@@ -154,7 +155,7 @@ function strictCsp() {
 // ---------------------------------------------------------------------------
 
 // html.cspNonce makes Vite nonce the <style> tags it injects for imported CSS.
-export default defineConfig({ plugins: [react(), strictCsp()], html: { cspNonce: NONCE }, base: '/' })
+export default defineConfig({ plugins: [react(), privyRegions(), strictCsp()], html: { cspNonce: NONCE }, base: '/' })
 
 // DISABLE CSP - uncomment the block below to serve no policy header at all.
 // The banner must still render and work exactly the same, which is the whole

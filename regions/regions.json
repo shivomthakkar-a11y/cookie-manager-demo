@@ -1,0 +1,30 @@
+{
+  "bannerOrigin": "https://privy.idfystaging.com",
+  "ouId": "idfy-ops",
+  "regions": {
+    "eu": {
+      "label": "EU",
+      "law": "GDPR",
+      "model": "opt-in",
+      "url": "https://privy-demo-eu.pages.dev",
+      "devPort": 5101,
+      "bannerId": "84fdb4e2-d4fa-4287-ab23-81bc92a81f4a"
+    },
+    "us": {
+      "label": "US",
+      "law": "CCPA",
+      "model": "opt-out",
+      "url": "https://privy-demo-us.pages.dev",
+      "devPort": 5102,
+      "bannerId": "9f94c5a2-1d1a-4a51-a149-164b0a37e923"
+    },
+    "in": {
+      "label": "India",
+      "law": "DPDP",
+      "model": "opt-in",
+      "url": "https://privy-demo-in.pages.dev",
+      "devPort": 5103,
+      "bannerId": "4e4fd9e6-153a-4163-955c-c91f1d065288"
+    }
+  }
+}
