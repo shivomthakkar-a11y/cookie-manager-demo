@@ -12,23 +12,11 @@
     rel="stylesheet">
   <title>Cookie Manager</title>
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KS3M7CSF');</script>
-  <!-- End Google Tag Manager -->
-   
-
-
-
-
-
-
-
 <!-- Strict CSP? Put nonce="YOUR_NONCE" on the tag below, and make sure both script-src and style-src accept that nonce (the banner nonces its stylesheets too). Injecting this tag from your own script? Set s.nonce = "YOUR_NONCE" on the element, or window.Privy = window.Privy || {}; window.Privy.nonce = "YOUR_NONCE"; if you cannot (that fallback needs 'strict-dynamic' in script-src, or the injected tag never runs). -->
-<script type="text/javascript" src="https://privy.idfystaging.com/cookie-manager/cookie-banner/assets/72c53aa1642b/e98087df-db36-4760-b629-2a17fd795762" nonce="__PRIVY_NONCE__"></script>
+<!-- Strict CSP? Put nonce="YOUR_NONCE" on the tag below, and make sure both script-src and style-src accept that nonce (the banner nonces its stylesheets too). Injecting this tag from your own script? Set s.nonce = "YOUR_NONCE" on the element, or window.Privy = window.Privy || {}; window.Privy.nonce = "YOUR_NONCE"; if you cannot (that fallback needs 'strict-dynamic' in script-src, or the injected tag never runs). -->
+<!-- Strict CSP? Put nonce="YOUR_NONCE" on the tag below, and make sure both script-src and style-src accept that nonce (the banner nonces its stylesheets too). Injecting this tag from your own script? Set s.nonce = "YOUR_NONCE" on the element, or window.Privy = window.Privy || {}; window.Privy.nonce = "YOUR_NONCE"; if you cannot (that fallback needs 'strict-dynamic' in script-src, or the injected tag never runs). -->
+<!-- Strict CSP? Put nonce="YOUR_NONCE" on the tag below, and make sure both script-src and style-src accept that nonce (the banner nonces its stylesheets too). Injecting this tag from your own script? Set s.nonce = "YOUR_NONCE" on the element, or window.Privy = window.Privy || {}; window.Privy.nonce = "YOUR_NONCE"; if you cannot (that fallback needs 'strict-dynamic' in script-src, or the injected tag never runs). -->
+<script type="text/javascript" src="https://privy.idfystaging.com/cookie-manager/cookie-banner/assets/3eb1028ab3ed/7e29aeff-612e-4f77-a540-e3d9be80219c"></script>
 </head>
 <body>
   <!-- <iframe src="https://www.clarity.ms/tag/f4v1091lex" frameborder="0"></iframe> -->
@@ -39,79 +27,13 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div id="root"></div>
-  <!-- HubSpot forms loader, kept for the pre-consent tag tests (PRI-89). The
-       form itself is not created: it injects <style> tags without our nonce,
-       the strict CSP blocks them and the form throws styled-components #17. -->
   <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js"></script>
-
-  <!-- Test vendors (PRI-89). Real third-party tags so the scanner and the
-       banner have cookies to find. Keep them below the banner tag, and add new
-       hosts to the VENDOR_* lists in vite.config.js or the CSP blocks them. -->
-  <section id="privy-test-vendors" class="test-vendors">
-    <h2>Test vendors</h2>
-    <div class="test-vendor-grid">
-      <div class="test-vendor">
-        <h3>Google Maps (iframe)</h3>
-        <iframe src="https://www.google.com/maps?q=Mumbai&amp;output=embed" width="400" height="300"
-          title="Google Maps" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="test-vendor">
-        <h3>YouTube privacy mode (iframe)</h3>
-        <iframe src="https://www.youtube-nocookie.com/embed/HjhbJKK5OJU" width="400" height="225"
-          title="YouTube privacy mode" referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-      </div>
-      <div class="test-vendor">
-        <h3>Facebook Page plugin (iframe)</h3>
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;tabs=timeline&amp;width=340&amp;height=400&amp;small_header=true&amp;hide_cover=false&amp;show_facepile=false"
-          width="340" height="400" title="Facebook Page plugin" scrolling="no"
-          allow="encrypted-media; clipboard-write; picture-in-picture; web-share"></iframe>
-      </div>
-      <div class="test-vendor">
-        <h3>X share button (script)</h3>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
-          data-show-count="false">Post</a>
-      </div>
-      <div class="test-vendor">
-        <h3>reCAPTCHA (never-block marker)</h3>
-        <!-- Google's public test site key: always passes and is not a secret. -->
-        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-      </div>
-      <div class="test-vendor">
-        <h3>Google ad slot (script + iframes)</h3>
-        <div id="div-gpt-ad-test" class="test-vendor-ad"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Microsoft Clarity. The snippet injects its tag with el.src, the path FR-2 covers. -->
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "f4v1091lex");
-  </script>
-
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-  <!-- data-privy-consent="ignore" exempts this tag from blocking (TRD-CKM-002 FR-1). -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer data-privy-consent="ignore"></script>
-
-  <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
   <script>
-    window.googletag = window.googletag || { cmd: [] };
-    googletag.cmd.push(function () {
-      // Google's public sample ad unit from the GPT docs, not an IDfy account.
-      googletag.defineSlot('/6355419/Travel/Europe/France/Paris', [300, 250], 'div-gpt-ad-test')
-        .addService(googletag.pubads());
-      googletag.enableServices();
-      googletag.display('div-gpt-ad-test');
+    hbspt.forms.create({
+      portalId: "48746683",
+      formId: "0f45e9f9-0451-488e-babb-fd325ba2af4f"
     });
   </script>
-
   <script type="module" src="/src/main.jsx"></script>
 </body>
 <script>

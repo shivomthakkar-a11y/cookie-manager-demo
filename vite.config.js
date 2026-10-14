@@ -12,53 +12,7 @@ import privyRegions from './regions/privy-regions.js'
 const BACKEND = 'http://127.0.0.1:3001'
 
 // Where the deployed demo talks to. Dev proxies to BACKEND instead.
-const STAGING = ' https://privy.idfystaging.com https://privy.idfy.com https://api.pyxis.privybyidfy.app'
-
-// Fixed test nonce. It must match the literal nonce= on the banner tag in
-// index.html, and Vite's html.cspNonce needs one known value for the <style>
-// tags its dev client injects. A real host mints a fresh CSPRNG nonce per
-// response instead: randomBytes(18).toString('base64').
-const NONCE = randomBytes(18).toString('base64')   // CSPRNG, one per dev-server start / per build
-// const NONCE = 'EDN9X8++t9iaowoNsOS+Ag=='
-
-// Third-party vendors the demo loads on purpose, so the scanner and the banner
-// have real cookies to find (PRI-89). Only frame, image and network sources
-// widen. script-src stays nonce + 'strict-dynamic', which is what the PRI-87
-// suite tests: vendor scripts still run only when a nonced script loads them.
-// The LinkedIn, Meta, CleverTap, MoEngage and VWO hosts are listed ahead of
-// their tags, which land once the test accounts exist.
-const VENDOR_FRAMES = [
-    'https://www.googletagmanager.com', 'https://*.doubleclick.net', 'https://*.googlesyndication.com',
-    'https://www.google.com', 'https://maps.google.com', 'https://recaptcha.google.com',
-    'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://open.spotify.com',
-    'https://player.vimeo.com', 'https://www.facebook.com', 'https://platform.twitter.com',
-    'https://syndication.twitter.com', 'https://*.hsforms.net', 'https://*.hsforms.com',
-    'https://*.hubspot.com', 'https://vars.hotjar.com', 'https://*.adtrafficquality.google'
-].join(' ')
-
-const VENDOR_IMAGES = [
-    'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com',
-    'https://*.doubleclick.net', 'https://*.googlesyndication.com', 'https://*.adtrafficquality.google',
-    'https://www.google.com', 'https://www.google.co.in', 'https://*.gstatic.com',
-    'https://cdn.prod.website-files.com', 'https://*.hotjar.com', 'https://*.hubspot.com',
-    'https://*.hsforms.com', 'https://*.hsforms.net', 'https://*.hs-analytics.net',
-    'https://*.hsadspixel.net', 'https://*.hs-embed-reporting.com', 'https://*.clarity.ms', 'https://c.bing.com', 'https://*.twitter.com',
-    'https://*.twimg.com', 'https://*.x.com', 'https://www.facebook.com', 'https://px.ads.linkedin.com',
-    'https://*.clevertap-prod.com', 'https://*.moengage.com', 'https://*.visualwebsiteoptimizer.com'
-].join(' ')
-
-const VENDOR_CONNECT = [
-    'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com',
-    'https://*.doubleclick.net', 'https://*.googlesyndication.com', 'https://*.adtrafficquality.google',
-    'https://www.google.com', 'https://*.hotjar.com', 'https://*.hotjar.io', 'wss://*.hotjar.com',
-    'https://*.hsforms.com', 'https://*.hsforms.net', 'https://hubspot-forms-static-embed.s3.amazonaws.com',
-    'https://*.hubspot.com', 'https://*.hubapi.com', 'https://*.hs-banner.com',
-    'https://*.hscollectedforms.net', 'https://*.hs-analytics.net', 'https://*.clarity.ms',
-    'https://*.twitter.com', 'https://*.x.com', 'https://www.facebook.com', 'https://connect.facebook.net',
-    'https://px.ads.linkedin.com', 'https://*.linkedin.com', 'https://*.clevertap-prod.com',
-    'https://*.wzrkt.com', 'https://*.moengage.com', 'https://*.visualwebsiteoptimizer.com',
-    'https://*.vwo.com'
-].join(' ')
+const STAGING = 'https://privy.idfystaging.com'
 
 // The policy the BUILT page carries. GitHub Pages cannot send response headers,
 // so the deployed demo declares its policy in a meta tag. Same shape as the dev
@@ -72,11 +26,11 @@ function deployedPolicy(nonce) {
     return [
         "default-src 'self'",
         `script-src 'nonce-${nonce}' 'strict-dynamic'`,
-        `style-src 'self' 'nonce-${nonce}' https://fonts.googleapis.com`,
+        `style-src 'nonce-${nonce}' https://fonts.googleapis.com`,
         'font-src https://fonts.gstatic.com data:',
-        `connect-src 'self' ${STAGING} ${VENDOR_CONNECT}`,
-        `img-src 'self' data: ${VENDOR_IMAGES}`,
-        `frame-src 'self' ${STAGING} ${VENDOR_FRAMES}`,
+        `connect-src 'self' ${STAGING}`,
+        "img-src 'self' data:",
+        `frame-src 'self' ${STAGING}`,
         "object-src 'none'",
         "base-uri 'none'"
     ].join('; ')
@@ -89,19 +43,17 @@ function strictCsp() {
         configureServer(server) {
             server.middlewares.use((req, res, next) => {
                 // nonce = randomBytes(18).toString('base64')   // CSPRNG, never Math.random
-                nonce = NONCE
+                nonce = "EDN9X8++t9iaowoNsOS+Ag=="
                 res.setHeader('Content-Security-Policy', [
                     "default-src 'self'",
                     // No unsafe-inline: a nonce in this directive makes the
                     // browser ignore it anyway. That is the whole point of FR-9.
                     `script-src 'nonce-${nonce}' 'strict-dynamic'`,
-                    // 'self' lets the site's own built stylesheet load. It
-                    // does not allow inline styles.
-                    `style-src 'self' 'nonce-${nonce}' https://fonts.googleapis.com`,
+                    `style-src 'nonce-${nonce}' https://fonts.googleapis.com`,
                     'font-src https://fonts.gstatic.com data:',
-                    `connect-src 'self' ws: ${BACKEND} ${VENDOR_CONNECT}`,
-                    `img-src 'self' data: ${VENDOR_IMAGES}`,
-                    `frame-src 'self' ${BACKEND} ${VENDOR_FRAMES}`,
+                    `connect-src 'self' ws: ${BACKEND}`,
+                    "img-src 'self' data:",
+                    `frame-src 'self' ${BACKEND}`,
                     "object-src 'none'",
                     "base-uri 'none'"
                 ].join('; '))
@@ -115,7 +67,7 @@ function strictCsp() {
                 // and `nonce` is still ''. Mint one for the artifact, or every
                 // tag ships with nonce="" and the page carries no policy at all.
                 // const value = nonce || randomBytes(18).toString('base64')
-                const value = NONCE
+                const value = "EDN9X8++t9iaowoNsOS+Ag=="
 
                 // The banner tag is deliberately excluded from the blanket
                 // rule below. Auto-nonceing it would make it impossible to
@@ -154,8 +106,7 @@ function strictCsp() {
 // in index.html. This is what a real client running a nonce policy looks like.
 // ---------------------------------------------------------------------------
 
-// html.cspNonce makes Vite nonce the <style> tags it injects for imported CSS.
-export default defineConfig({ plugins: [react(), privyRegions(), strictCsp()], html: { cspNonce: NONCE }, base: '/' })
+// export default defineConfig({ plugins: [react(), strictCsp()], base: '/' })
 
 // DISABLE CSP - uncomment the block below to serve no policy header at all.
 // The banner must still render and work exactly the same, which is the whole
@@ -163,7 +114,7 @@ export default defineConfig({ plugins: [react(), privyRegions(), strictCsp()], h
 // The __PRIVY_NONCE__ placeholder is left unsubstituted in this mode and is
 // harmless, because a nonce attribute is only consulted when a policy names one.
 
-// export default defineConfig({
-//   plugins: [react()],
-//   base: '/'
-// })
+export default defineConfig({
+  plugins: [react(), privyRegions()],
+  base: '/'
+})

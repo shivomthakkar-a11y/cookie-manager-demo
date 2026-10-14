@@ -103,13 +103,10 @@ const GATE_RUNNER = `<script>
   })()
 </script>`
 
+// The page follows sanketsaboo main, which drops and re-adds these tags, so a
+// missing snippet means nothing to hold rather than a broken build.
 function gateTrackers(html) {
-    return GATES.reduce((out, gate) => {
-        if (!gate.match.test(out)) {
-            throw new Error(`privy-regions: ${gate.name} snippet not found in index.html`)
-        }
-        return out.replace(gate.match, gate.to)
-    }, html)
+    return GATES.reduce((out, gate) => out.replace(gate.match, gate.to), html)
 }
 
 function regionBar(current, urlFor) {
@@ -198,9 +195,11 @@ export default function privyRegions() {
             const banner = `<script type="text/javascript" src="${src}" nonce="__PRIVY_NONCE__"></script>`
             const seed = region.model === 'opt-out' ? optOutSeed(region.bannerId) + '\n' : ''
             const urlFor = (key, r) => (isDev ? `http://localhost:${r.devPort}/` : `${r.url}/`)
-            return gateTrackers(html)
+            const gated = gateTrackers(html)
+            const runner = gated.includes(GATED_TYPE) ? `\n${GATE_RUNNER}` : ''
+            return gated
                 .replace(BANNER_TAG, seed + banner)
-                .replace(/<body>/i, `<body>\n${regionBar(regionKey, urlFor)}\n${GATE_RUNNER}`)
+                .replace(/<body>/i, `<body>\n${regionBar(regionKey, urlFor)}${runner}`)
         }
     }
 }

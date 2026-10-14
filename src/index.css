@@ -64,38 +64,3 @@ button:focus-visible {
 }
 
 
-/* Test vendors section. It lives in index.html outside the React root, and the
-   strict CSP blocks inline style attributes, so it is styled here. */
-.test-vendors {
-  background-color: #ffffff;
-  color: #111111;
-  padding: 2rem 1rem;
-}
-
-.test-vendors h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.test-vendor-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.test-vendor h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.test-vendor iframe {
-  max-width: 100%;
-  border: 0;
-}
-
-.test-vendor-ad {
-  min-width: 300px;
-  min-height: 250px;
-}
