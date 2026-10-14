@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
-  <title>Privy Cookie Lab</title>
+  <title>Cookie Manager</title>
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -31,204 +31,60 @@
 <script type="text/javascript" src="https://privy.idfystaging.com/cookie-manager/cookie-banner/assets/72c53aa1642b/e98087df-db36-4760-b629-2a17fd795762" nonce="__PRIVY_NONCE__"></script>
 </head>
 <body>
+  <!-- <iframe src="https://www.clarity.ms/tag/f4v1091lex" frameborder="0"></iframe> -->
+  <!-- <script async="" src="https://www.clarity.ms/tag/f4v1091lex"></script> -->
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KS3M7CSF" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-  <!-- Cookie Lab. Every vendor below is a real third-party tag, embedded the way
-       sites embed it, so the scanner finds its cookies and the banner has to
-       block it. Each card's status chip is computed from network evidence (did
-       the browser request that vendor?) by src/lab.js. -->
-  <header class="lab-header">
-    <b>PRIVY <span>by IDfy</span> · Cookie Lab</b>
-    <nav><a href="#vendors">Vendors</a><a href="#techniques">Techniques</a><a href="#cookie-log">Cookie log</a></nav>
-  </header>
-
-  <div class="lab-hero">
-    <h1>Every kind of tracker, on one page.<br>Watch Privy find it and stop it.</h1>
-    <p>This site deliberately embeds third-party services across every loading technique. Privy's scanner
-      discovers their cookies; the banner blocks each one until you consent to its category. Each card shows
-      whether the browser has contacted that vendor yet.</p>
-    <div id="root"></div>
-    <div class="lab-legend">
-      <span><i class="lab-dot nec"></i>Necessary</span>
-      <span><i class="lab-dot fun"></i>Functional</span>
-      <span><i class="lab-dot ana"></i>Analytics</span>
-      <span><i class="lab-dot mkt"></i>Marketing</span>
-    </div>
-  </div>
-
-  <section id="vendors" class="lab-section">
-    <h2><i class="lab-dot mkt"></i>Marketing &amp; social</h2>
-    <p>Video, audio and social embeds that drop third-party advertising cookies.</p>
-    <div class="lab-grid">
-      <div class="lab-card" data-lab-vendor="YouTube" data-lab-hosts="www.youtube.com/embed">
-        <div class="lab-top"><span class="lab-name">YouTube</span><span class="lab-chip"></span></div>
-        <div class="lab-embed"><iframe src="https://www.youtube.com/embed/HjhbJKK5OJU?si=jzweuRYz8NKVEgh1" title="YouTube video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-        <div class="lab-meta"><span class="lab-tag">iframe</span> sets <code>VISITOR_INFO1_LIVE</code>, <code>YSC</code> (3rd-party)</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Vimeo" data-lab-hosts="player.vimeo.com">
-        <div class="lab-top"><span class="lab-name">Vimeo</span><span class="lab-chip"></span></div>
-        <div class="lab-embed"><iframe src="https://player.vimeo.com/video/76979871" title="Vimeo video"
-          allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="lab-meta"><span class="lab-tag">iframe</span> sets <code>vuid</code> (3rd-party)</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Spotify" data-lab-hosts="open.spotify.com">
-        <div class="lab-top"><span class="lab-name">Spotify</span><span class="lab-chip"></span></div>
-        <div class="lab-embed"><iframe src="https://open.spotify.com/embed/track/7ouMYWpwJ422jRcDASZB7P" title="Spotify track"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
-        <div class="lab-meta"><span class="lab-tag">iframe</span> sets <code>sp_t</code>, <code>sp_landing</code> (3rd-party)</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="SoundCloud" data-lab-hosts="w.soundcloud.com">
-        <div class="lab-top"><span class="lab-name">SoundCloud</span><span class="lab-chip"></span></div>
-        <div class="lab-embed"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;color=%23ff5500"
-          title="SoundCloud track" allow="autoplay"></iframe></div>
-        <div class="lab-meta"><span class="lab-tag">iframe</span></div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Facebook" data-lab-hosts="www.facebook.com/plugins">
-        <div class="lab-top"><span class="lab-name">Facebook Page plugin</span><span class="lab-chip"></span></div>
-        <div class="lab-embed"><iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;tabs=timeline&amp;width=340&amp;height=400&amp;small_header=true&amp;hide_cover=false&amp;show_facepile=false"
-          title="Facebook Page plugin" scrolling="no"
-          allow="encrypted-media; clipboard-write; picture-in-picture; web-share"></iframe></div>
-        <div class="lab-meta"><span class="lab-tag">iframe</span> sets <code>fr</code>, <code>datr</code> (3rd-party)</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="X" data-lab-hosts="platform.twitter.com">
-        <div class="lab-top"><span class="lab-name">X (Twitter)</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
-          data-show-count="false">Post</a></div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> widgets.js</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Instagram" data-lab-hosts="www.instagram.com">
-        <div class="lab-top"><span class="lab-name">Instagram</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/instagram/"
-          data-instgrm-version="14"><a href="https://www.instagram.com/instagram/">Instagram on Instagram</a></blockquote></div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> embed.js</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="TikTok" data-lab-hosts="www.tiktok.com">
-        <div class="lab-top"><span class="lab-name">TikTok</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@scout2015/video/6718335390845095173"
-          data-video-id="6718335390845095173"><a href="https://www.tiktok.com/@scout2015">@scout2015</a></blockquote></div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> embed.js</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Pinterest" data-lab-hosts="assets.pinterest.com">
-        <div class="lab-top"><span class="lab-name">Pinterest</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad"><a data-pin-do="buttonBookmark" href="https://www.pinterest.com/pin/create/button/">Save</a></div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> pinit.js</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Reddit" data-lab-hosts="embed.reddit.com">
-        <div class="lab-top"><span class="lab-name">Reddit</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad"><blockquote class="reddit-embed-bq" data-embed-height="240"><a
-          href="https://www.reddit.com/r/IAmA/comments/z1c9z/i_am_barack_obama_president_of_the_united_states/">Reddit post</a></blockquote></div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> widgets.js</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Google Ads" data-lab-hosts="securepubads.g.doubleclick.net">
-        <div class="lab-top"><span class="lab-name">Google Ads (GPT)</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad"><div id="div-gpt-ad-test" class="test-vendor-ad"></div></div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> sets <code>__gads</code>, <code>__gpi</code></div>
-      </div>
-      <div class="lab-card" data-lab-vendor="LinkedIn" data-lab-hosts="px.ads.linkedin.com,snap.licdn.com">
-        <div class="lab-top"><span class="lab-name">LinkedIn Insight</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Fired by the GTM container, not by this page</div>
-        <div class="lab-meta"><span class="lab-tag">via GTM</span> pixel</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="lab-section">
-    <h2><i class="lab-dot ana"></i>Analytics</h2>
-    <p>Measurement tools, loaded every way sites actually load them.</p>
-    <div class="lab-grid">
-      <div class="lab-card" data-lab-vendor="Google Tag Manager" data-lab-hosts="www.googletagmanager.com">
-        <div class="lab-top"><span class="lab-name">Google Tag Manager</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Container GTM-KS3M7CSF</div>
-        <div class="lab-meta"><span class="lab-tag">inline script</span> loads the container</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Google Analytics 4" data-lab-hosts="google-analytics.com">
-        <div class="lab-top"><span class="lab-name">Google Analytics 4</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Fired by GTM</div>
-        <div class="lab-meta"><span class="lab-tag">via GTM</span> sets <code>_ga</code>, <code>_ga_*</code>, <code>_gcl_au</code></div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Microsoft Clarity" data-lab-hosts="clarity.ms">
-        <div class="lab-top"><span class="lab-name">Microsoft Clarity</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Session recording</div>
-        <div class="lab-meta"><span class="lab-tag">dynamic script</span> sets <code>_clck</code>, <code>_clsk</code></div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Hotjar" data-lab-hosts="hotjar.com">
-        <div class="lab-top"><span class="lab-name">Hotjar</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Heatmaps, fired by GTM</div>
-        <div class="lab-meta"><span class="lab-tag">via GTM</span> sets <code>_hjSession*</code></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="lab-section">
-    <h2><i class="lab-dot fun"></i>Functional</h2>
-    <p>Features a visitor might want, which still set cookies.</p>
-    <div class="lab-grid">
-      <div class="lab-card" data-lab-vendor="Google Maps" data-lab-hosts="google.com/maps">
-        <div class="lab-top"><span class="lab-name">Google Maps</span><span class="lab-chip"></span></div>
-        <div class="lab-embed"><iframe src="https://www.google.com/maps?q=Mumbai&amp;output=embed" title="Google Maps"
-          referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-        <div class="lab-meta"><span class="lab-tag">iframe</span> sets <code>NID</code> (3rd-party)</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="lab-section">
-    <h2><i class="lab-dot nec"></i>Necessary</h2>
-    <p>These run before consent by design; the banner should leave them alone.</p>
-    <div class="lab-grid">
-      <div class="lab-card" data-lab-vendor="HubSpot" data-lab-hosts="js.hsforms.net">
-        <div class="lab-top"><span class="lab-name">HubSpot forms</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Forms loader</div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> categorised Necessary by the scan</div>
-      </div>
-      <div class="lab-card" data-lab-vendor="reCAPTCHA" data-lab-hosts="google.com/recaptcha">
-        <div class="lab-top"><span class="lab-name">reCAPTCHA</span><span class="lab-chip"></span></div>
-        <!-- Google's public test site key: always passes and is not a secret. -->
-        <div class="lab-embed lab-embed-pad"><div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div></div>
-        <div class="lab-meta"><span class="lab-tag">exempt</span> <code>data-privy-consent="ignore"</code></div>
-      </div>
-      <div class="lab-card" data-lab-vendor="Stripe" data-lab-hosts="js.stripe.com">
-        <div class="lab-top"><span class="lab-name">Stripe.js</span><span class="lab-chip"></span></div>
-        <div class="lab-embed lab-embed-pad lab-note">Payment fraud signals</div>
-        <div class="lab-meta"><span class="lab-tag">static script</span> sets <code>__stripe_mid</code></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="lab-section">
-    <h2><i class="lab-dot oth"></i>First-party cookies</h2>
-    <p>Cookies this site sets itself, only for the categories you have consented to.</p>
-    <div id="lab-first-party"></div>
-  </section>
-
-  <section id="techniques" class="lab-section">
-    <h2>Technique coverage</h2>
-    <p>Every way a tag reaches a page, so each blocking path is exercised.</p>
-    <table class="lab-table">
-      <tr><th>Technique</th><th>Example on this page</th></tr>
-      <tr><td>Static <code>&lt;script src&gt;</code></td><td>Google Ads, X, Instagram, TikTok, Pinterest, Reddit, HubSpot, Stripe</td></tr>
-      <tr><td>Dynamic injection (<code>el.src = …</code>)</td><td>Microsoft Clarity</td></tr>
-      <tr><td>Inline script</td><td>Google Tag Manager loader</td></tr>
-      <tr><td>Container-fired (GTM)</td><td>GA4, Hotjar, LinkedIn Insight</td></tr>
-      <tr><td><code>&lt;iframe&gt;</code></td><td>YouTube, Vimeo, Spotify, SoundCloud, Facebook, Google Maps</td></tr>
-    </table>
-  </section>
-
-  <section id="cookie-log" class="lab-section">
-    <h2>Live cookie log</h2>
-    <p>First-party cookies as they appear. Third-party cookies are invisible to page scripts; the card notes say which
-      ones to look for in DevTools.</p>
-    <div id="lab-log"></div>
-  </section>
-
-  <!-- HubSpot forms loader, kept for the pre-consent tag tests (PRI-89). -->
+  <div id="root"></div>
+  <!-- HubSpot forms loader, kept for the pre-consent tag tests (PRI-89). The
+       form itself is not created: it injects <style> tags without our nonce,
+       the strict CSP blocks them and the form throws styled-components #17. -->
   <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js"></script>
+
+  <!-- Test vendors (PRI-89). Real third-party tags so the scanner and the
+       banner have cookies to find. Keep them below the banner tag, and add new
+       hosts to the VENDOR_* lists in vite.config.js or the CSP blocks them. -->
+  <section id="privy-test-vendors" class="test-vendors">
+    <h2>Test vendors</h2>
+    <div class="test-vendor-grid">
+      <div class="test-vendor">
+        <h3>Google Maps (iframe)</h3>
+        <iframe src="https://www.google.com/maps?q=Mumbai&amp;output=embed" width="400" height="300"
+          title="Google Maps" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="test-vendor">
+        <h3>YouTube privacy mode (iframe)</h3>
+        <iframe src="https://www.youtube-nocookie.com/embed/HjhbJKK5OJU" width="400" height="225"
+          title="YouTube privacy mode" referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <div class="test-vendor">
+        <h3>Facebook Page plugin (iframe)</h3>
+        <iframe
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;tabs=timeline&amp;width=340&amp;height=400&amp;small_header=true&amp;hide_cover=false&amp;show_facepile=false"
+          width="340" height="400" title="Facebook Page plugin" scrolling="no"
+          allow="encrypted-media; clipboard-write; picture-in-picture; web-share"></iframe>
+      </div>
+      <div class="test-vendor">
+        <h3>X share button (script)</h3>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+          data-show-count="false">Post</a>
+      </div>
+      <div class="test-vendor">
+        <h3>reCAPTCHA (never-block marker)</h3>
+        <!-- Google's public test site key: always passes and is not a secret. -->
+        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+      </div>
+      <div class="test-vendor">
+        <h3>Google ad slot (script + iframes)</h3>
+        <div id="div-gpt-ad-test" class="test-vendor-ad"></div>
+      </div>
+    </div>
+  </section>
 
   <!-- Microsoft Clarity. The snippet injects its tag with el.src, the path FR-2 covers. -->
   <script type="text/javascript">
@@ -240,11 +96,6 @@
   </script>
 
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  <script async src="https://www.instagram.com/embed.js"></script>
-  <script async src="https://www.tiktok.com/embed.js"></script>
-  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
-  <script async src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-  <script src="https://js.stripe.com/v3/"></script>
 
   <!-- data-privy-consent="ignore" exempts this tag from blocking (TRD-CKM-002 FR-1). -->
   <script src="https://www.google.com/recaptcha/api.js" async defer data-privy-consent="ignore"></script>
@@ -263,5 +114,8 @@
 
   <script type="module" src="/src/main.jsx"></script>
 </body>
+<script>
+  // document.addEventListener("click", reconsentPreference(agreed))
+</script>
 
 </html>
