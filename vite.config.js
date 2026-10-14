@@ -154,7 +154,9 @@ function strictCsp() {
 // ---------------------------------------------------------------------------
 
 // html.cspNonce makes Vite nonce the <style> tags it injects for imported CSS.
-export default defineConfig({ plugins: [react(), strictCsp()], html: { cspNonce: NONCE }, base: '/' })
+// Scraper demo: no CSP. The embeds (Instagram, TikTok, Reddit, Stripe...) inject
+// inline styles that a nonce-only policy blocks.
+export default defineConfig({ plugins: [react()], base: '/' })
 
 // DISABLE CSP - uncomment the block below to serve no policy header at all.
 // The banner must still render and work exactly the same, which is the whole
