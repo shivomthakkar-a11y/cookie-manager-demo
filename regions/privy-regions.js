@@ -27,12 +27,14 @@ const ASSET_PATH = (ouId, bannerId) => `/cookie-manager/cookie-banner/assets/${o
 // update:false plus the banner id mark it as "seen, not yet answered", so the
 // banner neither treats it as a fresh visit (which reloads when
 // reload_on_consent is on) nor as a recorded choice (which hides the banner).
+//
+// Consent stored for another banner is replaced, not kept: it was given under
+// opt-in defaults (the placeholder deploy served the opt-in live-site banner).
 const optOutSeed = (bannerId) => `<script>
   (function () {
     try {
       var name = 'privyConsent'
-      var hasCookie = document.cookie.split('; ').some(function (c) { return c.indexOf(name + '=') === 0 })
-      if (hasCookie || localStorage.getItem(name)) return
+      if (localStorage.getItem('privyConsentedBannerId') === ${JSON.stringify(bannerId)}) return
       var all = JSON.stringify({ NECESSARY: true, FUNCTIONAL: true, ANALYTICS: true, MARKETING: true, update: false })
       document.cookie = name + '=' + all + '; path=/; max-age=31536000'
       localStorage.setItem(name, all)
