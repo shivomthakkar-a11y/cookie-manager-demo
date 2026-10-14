@@ -155,7 +155,10 @@ function strictCsp() {
 // ---------------------------------------------------------------------------
 
 // html.cspNonce makes Vite nonce the <style> tags it injects for imported CSS.
-export default defineConfig({ plugins: [react(), privyRegions(), strictCsp()], html: { cspNonce: NONCE }, base: '/' })
+// Regional builds skip the strict CSP: the Cookie Lab embeds (Instagram, TikTok,
+// Reddit, Stripe...) inject inline styles that a nonce-only policy blocks.
+const csp = process.env.PRIVY_REGION ? [] : [strictCsp()]
+export default defineConfig({ plugins: [react(), privyRegions(), ...csp], html: { cspNonce: NONCE }, base: '/' })
 
 // DISABLE CSP - uncomment the block below to serve no policy header at all.
 // The banner must still render and work exactly the same, which is the whole
