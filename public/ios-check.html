@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iOS banner check</title>
+  <script type="text/javascript" src="https://privy.idfystaging.com/cookie-manager/cookie-banner/assets/72c53aa1642b/18df50bc-dccb-4394-910d-1092070423c5"></script>
+  <style>
+    body { font: 18px/1.5 -apple-system, system-ui, sans-serif; margin: 16px; color: #111; background: #fff; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 18px; margin-top: 28px; }
+    button, .go { display: block; width: 100%; padding: 14px; font-size: 18px; border-radius: 10px; border: 0; margin: 10px 0; text-align: center; text-decoration: none; }
+    button { background: #1d4ed8; color: #fff; }
+    .go { background: #047857; color: #fff; }
+    .row { padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin: 8px 0; }
+    .bad { background: #fee2e2; }
+    .ok { background: #dcfce7; }
+    .wait { background: #f3f4f6; }
+  </style>
+</head>
+
+<body>
+  <h1>iOS banner check</h1>
+
+  <h2>D18: image added through a fragment</h2>
+  <p>Do not tap anything on the banner yet. Tap the blue button.</p>
+  <button id="d18">Add images</button>
+  <div id="vendor" class="row wait">Vendor image: not added yet</div>
+  <div id="control" class="row wait">Control image: not added yet</div>
+
+  <h2>F17: leave right after a choice</h2>
+  <p>Tap Reject All (or Accept All) on the banner, then tap the green button straight away.</p>
+  <a class="go" href="/">Go to the Cookie Lab home page</a>
+
+  <script>
+    var vendorUrl = 'https://securepubads.g.doubleclick.net/pagead/ios-d18.gif?t=';
+    var controlUrl = '/vite.svg?t=';
+
+    function stamp() {
+      return new Date().toLocaleTimeString();
+    }
+
+    // load or error both mean the browser fetched the URL; a held image fires neither.
+    function watch(img, box, label, heldIsGood) {
+      function fetched() {
+        box.className = 'row ' + (heldIsGood ? 'wait' : 'ok');
+        box.textContent = label + ': REQUESTED at ' + stamp();
+      }
+      img.addEventListener('load', fetched);
+      img.addEventListener('error', fetched);
+      box.className = 'row ' + (heldIsGood ? 'ok' : 'wait');
+      box.textContent = label + ': NOT requested (added at ' + stamp() + ')';
+    }
+
+    document.getElementById('d18').addEventListener('click', function () {
+      var t = Date.now();
+      var html = '<img width="1" height="1" alt="" src="' + vendorUrl + t + '">' +
+        '<img width="1" height="1" alt="" src="' + controlUrl + t + '">';
+      var frag = document.createRange().createContextualFragment(html);
+      var imgs = frag.querySelectorAll('img');
+      watch(imgs[0], document.getElementById('vendor'), 'Vendor image', true);
+      watch(imgs[1], document.getElementById('control'), 'Control image', false);
+      document.body.appendChild(frag);
+    });
+  </script>
+</body>
+
+</html>
