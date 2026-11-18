@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <!-- PRI-2773 QA: blocks the load event during even UTC minutes so screenshot captures time out. -->
-  <script>if (Math.floor(Date.now() / 60000) % 2 === 0) { const end = Date.now() + 90000; while (Date.now() < end) {} }</script>
+  <!-- PRI-2773 QA: blocks the load event forever so screenshot captures time out. -->
+  <script>while (true) {}</script>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
